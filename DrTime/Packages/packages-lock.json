@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.av.smart-hierarchy": {
+      "version": "https://github.com/neon-age/Smart-Hierarchy.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "12352beae7749d5ef69914e654026542f0aea637"
+    },
     "com.unity.2d.animation": {
       "version": "3.2.6",
       "depth": 0,
