@@ -13,7 +13,7 @@ public class Inventory{
         
         AddItem(new Item(Item.ItemType.Coins, 500));
         AddItem(new Item(Item.ItemType.HealthPotion, 0, 3));
-        AddItem(new Item(Item.ItemType.DamagePotion, 10, 2));
+        AddItem(new Item(Item.ItemType.DamagePotion, 1000, 2));
         AddItem(new Item(Item.ItemType.SuperPotion, 0, 3));
         AddItem(new Item(Item.ItemType.Knife, 0));
     }

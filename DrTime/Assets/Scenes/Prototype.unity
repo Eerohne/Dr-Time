@@ -3057,6 +3057,7 @@ GameObject:
   - component: {fileID: 863487551}
   - component: {fileID: 863487557}
   - component: {fileID: 863487556}
+  - component: {fileID: 863487558}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -3150,7 +3151,7 @@ Transform:
   m_GameObject: {fileID: 863487550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.34, y: 5.93, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.60358, y: 0.60358, z: 0.60358}
   m_Children:
   - {fileID: 768066731}
   m_Father: {fileID: 0}
@@ -3193,6 +3194,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &863487558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863487550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25789f36f50a754b9baae304c5ebab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!1 &918685243 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6283425052022370321, guid: 5d4e60b79fff3fa4691ca13535506f76,
