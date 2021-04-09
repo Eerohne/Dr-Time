@@ -15,7 +15,7 @@ TagManager:
   - 
   - 
   - Unwalkable
-  - Road
+  - Stone
   - Grass
   - Player
   - Collectible
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 112737183
+    locked: 0
+  - name: Walls
+    uniqueID: 4046660225
     locked: 0
   - name: Default
     uniqueID: 0

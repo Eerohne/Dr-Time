@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7430383474597677064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7430383474597677066}
+  - component: {fileID: 7430383474597677065}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7430383474597677066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430383474597677064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3097405, y: 5.9441757, z: -295.91626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7430383474597677065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430383474597677064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbd9f76ebe3d574b92861a811248eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Tutorial
+    clip: {fileID: 8300000, guid: 9c544e135ea7fd1478a3d17e6feace9b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
+  - name: Punch
+    clip: {fileID: 8300000, guid: 5c5887a2fa2c43d47b6b8ff69d8e61ea, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: Slash
+    clip: {fileID: 8300000, guid: 946ca10e3daa3ca47babbda2f54bb48f, type: 3}
+    volume: 0.247
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: GameOver
+    clip: {fileID: 8300000, guid: c3327b91aea50f742be35d7f1d7e0408, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: ItemCollection
+    clip: {fileID: 8300000, guid: 68fe3eb95c97e8740bc921522d73d2c9, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: CoinCollection
+    clip: {fileID: 8300000, guid: d0d54e73d2373284f85d3c3142534405, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: DrinkPotion
+    clip: {fileID: 8300000, guid: 15b3f7990799f0c4cb75b594e46f25f6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: PlayerDamage
+    clip: {fileID: 8300000, guid: 901cd9f0855804c44b01dcfe73b228d6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: Portal
+    clip: {fileID: 8300000, guid: 11201e3fa84ce6e42b2efbdba3f0feb4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: SlimeDamage
+    clip: {fileID: 8300000, guid: 901cd9f0855804c44b01dcfe73b228d6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: Dialogue
+    clip: {fileID: 8300000, guid: 11201e3fa84ce6e42b2efbdba3f0feb4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: GrassWalking
+    clip: {fileID: 8300000, guid: 10f94609cd2ecd144b586162f4a54ea4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 0
+  - name: StoneWalking
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 0
+  - name: Level1
+    clip: {fileID: 8300000, guid: 73d6f47cc765dab4ab7f04fe5bbc02d4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
+  - name: Level2
+    clip: {fileID: 8300000, guid: 1d8fbee6580bfc644a0a400e5d5864d4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
+  - name: Level3
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
+  - name: Lobby
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
+  - name: MainMenu
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
+  - name: PotionBreak
+    clip: {fileID: 8300000, guid: ddd79b281d70d3745a54c8ac1dca631a, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: SkeletonIdle
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 0
+  - name: SkeletonWalk
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 0
+  - name: SlimeWalk
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 0
+  - name: ButtonHover
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: Jump
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  - name: SkeletonDeath
+    clip: {fileID: 8300000, guid: a8f78c4182d206041b8cbd2176967df4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    isMusic: 0
+  mixer: {fileID: 24100000, guid: f73833b2e1cb68348ba27333c135602e, type: 2}

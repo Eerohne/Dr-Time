@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Projectile : SystemInterface
 {
+    public GameObject breakEffect;
+
     bool isSideView;
     bool atDestination = false;
     bool justStarted = true;
@@ -27,6 +29,7 @@ public class Projectile : SystemInterface
     FieldOfView fov;
     Item item;
     PlayerSystem player;
+    ProjectileMotion launcher;
 
     float timeAtLaunch;
 
@@ -40,6 +43,7 @@ public class Projectile : SystemInterface
         rb = GetComponent<Rigidbody2D>();
         fov = GetComponent<FieldOfView>();
         item = GetComponent<ItemScript>().GetItem();
+        launcher = FindObjectOfType<ProjectileMotion>();
 
         enemyLayer = fov.enemyMask;
         obstacleLayer = fov.obstacleMask;
@@ -100,6 +104,8 @@ public class Projectile : SystemInterface
         {
             enemy.gameObject.SendMessage("Damage", item.effect);
         }
+
+        FindObjectOfType<AudioManager>().PlayIndividualSound("PotionBreak");
         Destroy(gameObject);
     }
 
@@ -122,13 +128,17 @@ public class Projectile : SystemInterface
     void ComputeVelocity()
     {
 
-        velocity = player.GetVelocity();//FindObjectOfType<PlayerSystem>().GetVelocity();
-
-        velocity.x += Mathf.Abs(initialVelocity * Mathf.Cos(Mathf.Deg2Rad * launchAngle));
-        velocity.y += initialVelocity * Mathf.Sin(Mathf.Deg2Rad * launchAngle);
+        //velocity = player.GetVelocity();//FindObjectOfType<PlayerSystem>().GetVelocity();
 
         direction = player.GetDirection();
-        /*if (isSideView)
+
+        velocity.x += initialVelocity * direction.x * Mathf.Cos(launchAngle);
+        velocity.y += initialVelocity * Mathf.Sin(launchAngle);
+
+        /*if(!isSideView)
+            if (player.GetVelocity().sqrMagnitude >= 0.1f)
+                velocity.x += player.speed * player.GetMovement().x;
+        if (isSideView)
         {
             vel.x += (endPos.x - startPos.x) / timeTilHit;
             vel.y += ((endPos.y - startPos.y) - (0.5f * -gravity * timeTilHit * timeTilHit)) / timeTilHit;
@@ -162,14 +172,17 @@ public class Projectile : SystemInterface
         }
         else 
         {
-            newPosition.x = velocity.x * deltaTime * direction.x + startPos.x;
+            float vel = Mathf.Abs(initialVelocity * Mathf.Cos(launchAngle));
+            //vel = Mathf.Abs(velocity.x);
 
-            newPosition.y = velocity.x * deltaTime * direction.y + startPos.y; 
+            newPosition.x = vel * deltaTime * direction.x + startPos.x;
 
-            if(Vector2.Distance(startPos, newPosition) < distance / 2)
-                transform.localScale = new Vector2(transform.localScale.x - maxScaleIncrementation * Time.deltaTime, transform.localScale.x - maxScaleIncrementation * Time.deltaTime);
+            newPosition.y = vel * deltaTime * direction.y + startPos.y; 
+
+            /*if(Vector2.Distance(startPos, newPosition) < distance / 2)
+                transform.localScale = new Vector2(transform.localScale.x + maxScaleIncrementation * Time.deltaTime, transform.localScale.x + maxScaleIncrementation * Time.deltaTime);
             else
-                transform.localScale = new Vector2(transform.localScale.x - maxScaleIncrementation * Time.deltaTime, transform.localScale.x - maxScaleIncrementation * Time.deltaTime);
+                transform.localScale = new Vector2(transform.localScale.x - maxScaleIncrementation * Time.deltaTime, transform.localScale.x - maxScaleIncrementation * Time.deltaTime);*/
         }
 
         return newPosition;
@@ -191,5 +204,10 @@ public class Projectile : SystemInterface
         p.OnCreated(launchAngle, gravity, initialVelocity, start, end, sideView);
 
         return p;
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(breakEffect, transform.position, Quaternion.identity);
     }
 }

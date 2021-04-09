@@ -11,17 +11,21 @@ public class Inventory{
         //creates list of items
         itemList = new List<Item>();
         
-        AddItem(new Item(Item.ItemType.Coins, 500));
-        AddItem(new Item(Item.ItemType.HealthPotion, 0, 3));
-        AddItem(new Item(Item.ItemType.DamagePotion, 1000, 2));
-        AddItem(new Item(Item.ItemType.SuperPotion, 0, 3));
-        AddItem(new Item(Item.ItemType.Knife, 0));
+        AddItem(new Item(Item.ItemType.Coins, 500)); //position 0
+        AddItem(new Item(Item.ItemType.HealthPotion, 0, 3)); // position 1
+        AddItem(new Item(Item.ItemType.DamagePotion, 1000, 2)); // position 2
+        AddItem(new Item(Item.ItemType.SuperPotion, 0, 3)); // position 3
+        AddItem(new Item(Item.ItemType.Knife, 0)); // position 4
+        // position 5 is first puzzle piece
+        // position 6 is 2nd puzzle piece
+        // position 7 is 3rd puzzle piece
     }
 
     public static Item GetItem (Item item){
         return item;
     }
 
+    // see if item is stackable or else create a new one
     public void AddItem (Item item){
         if (item.IsStackable())
         {

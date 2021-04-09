@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5092385644540440303}
   - component: {fileID: 5092385644540440302}
   - component: {fileID: 5092385644540440301}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Super Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5092385644540440300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.21, y: -4.18, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -123,3 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   amount: 1
+  effect: 0
+  itemName: 

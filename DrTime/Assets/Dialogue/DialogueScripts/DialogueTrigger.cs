@@ -37,8 +37,12 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TriggerDialogue();
-        StartCoroutine("DestroyDialogueTrigger");
+        if(collision.gameObject.tag == "Player")
+        { 
+            TriggerDialogue();
+            StartCoroutine("DestroyDialogueTrigger");
+        }
+
     }
 
     public void TriggerDialogue()

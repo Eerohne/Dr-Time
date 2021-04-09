@@ -49,4 +49,13 @@ MonoBehaviour:
   superPotion: {fileID: 6192030970811015317, guid: 3f9f200c9e00d944a957fa034cbf3856,
     type: 3}
   gravity: 9.8
-  time: 1
+  initialVelocity: 1
+  projectileScale: 1
+  projectileRange: 5
+  potionBreak:
+    name: PotionBreak
+    clip: {fileID: 8300000, guid: ddd79b281d70d3745a54c8ac1dca631a, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0

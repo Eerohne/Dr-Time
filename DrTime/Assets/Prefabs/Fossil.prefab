@@ -99,7 +99,7 @@ MonoBehaviour:
   type: 5
   amount: 1
   effect: 0
-  name: Fossil
+  itemName: Fossil
 --- !u!61 &5091383133284741966
 BoxCollider2D:
   m_ObjectHideFlags: 0

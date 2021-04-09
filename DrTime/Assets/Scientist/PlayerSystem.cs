@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerSystem : SystemInterface
@@ -25,8 +26,22 @@ public class PlayerSystem : SystemInterface
     //[SerializeField] private UI_Inventory uiInventory;
 
     public Rigidbody2D rb; //Reference to the RigidBody2D
+    private BoxCollider2D box2d;
 
     public static Inventory inventory = new Inventory(); //Player's Inventory
+    
+    public float immunityBetweenAttacks; // Upon Receiving Damage, time in seconds before receiving damage again
+
+    public bool isImmune = false;
+    
+    float immunityBU; // Saved player immunity
+
+    Renderer playerSprite; // Refenrence to Sprite Renderer
+
+    public Color damageColor = Color.cyan;
+    private Color defaultColor;
+
+    public float jumpVelocity;
 
     // Sets up all default values
     void Awake()
@@ -40,6 +55,17 @@ public class PlayerSystem : SystemInterface
         fov = GetComponent<FieldOfView>();
         launcher = FindObjectOfType<ProjectileMotion>();
         soundManager = FindObjectOfType<AudioManager>();
+        playerSprite = GetComponent<SpriteRenderer>();
+        box2d = GetComponent<BoxCollider2D>();
+
+        defaultColor = playerSprite.material.color;
+
+        immunityBU = immunityBetweenAttacks;
+    }
+
+    private void Start()
+    {
+        SaveSystem.LoadPlayer();
     }
 
     Vector2 movement; // Movement Vector of the Player
@@ -47,23 +73,41 @@ public class PlayerSystem : SystemInterface
 
     public Animator anim; //Reference to Animator attached to Player
 
-    bool jump = false; // True if Player is jumping
-    bool canJump = true; // True if Player can jump again
+    //bool jump = false; // True if Player is jumping
+    //bool canJump = true; // True if Player can jump again
     [SerializeField] LayerMask floorMask;
 
     // Update is called once per frame
     void Update()
     {
-        if (!PauseScript.GameIsPaused) // When game is not paused
+        if (!PauseScript.GameIsPaused && !GameOverScript.gameOver) // When game is not paused
         {
-            if(life <= 0) // If Player has no life left
+            /*if (Input.GetKeyDown(KeyCode.U))
             {
-                GameOver(); 
+                Debug.Log("Recorded");
+                //playerUI.GetComponentInChildren<Health>().ChangeHealth(life--);
+                gameObject.SendMessage("Damage", 1);
+            }*/
+            if (life <= 0) // If Player has no life left
+            {
+                GameOver();
+                life = 10;
+            }
+            else if(isImmune)
+            {
+                immunityBetweenAttacks -= Time.deltaTime;
+                if(immunityBetweenAttacks <= 0.01f)
+                {
+                    immunityBetweenAttacks = immunityBU;
+                    isImmune = false;
+                    playerSprite.material.color = defaultColor;
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.E)) // On pressing E, the selected item is used
             {
-                Use();
+                if(SceneManager.GetActiveScene().name != "Lobby")
+                    Use();
             } 
             else if (Input.GetKeyDown(KeyCode.Alpha1)) // On pressing 1, selects HealthPotion
             {
@@ -101,29 +145,70 @@ public class PlayerSystem : SystemInterface
                     anim.SetFloat("Vertical", movement.y);
                     anim.SetFloat("Speed", movement.sqrMagnitude);
 
-                    // Save Pointing Direction
-                    if (!(Mathf.Abs(movement.x) <= 0.01f && Mathf.Abs(movement.y) <= 0.01f))
+                    float axis = Mathf.Abs(Input.GetAxis("Horizontal") + Input.GetAxis("Vertical"));
+                    
+                    if (!isWalking)
                     {
-                        direction = movement;
+                        if (axis > 0f)
+                        {
+                            PlayWalkingSound(false);
+                            isWalking = true;
+                        }
                     }
-                    else
+                    if (axis <= 0.01f)
                     {
-                        Idle();
+                        PlayWalkingSound(true);
+                        isWalking = false;
                     }
                 }
                 else //if side view
                 {
-                    //Movement Recording
+                    if (IsGrounded() && Input.GetKeyDown(KeyCode.W))
+                    {
+                        rb.velocity = Vector2.up * jumpVelocity;
+                    }
+
+
+                    movement.x = Input.GetAxisRaw("Horizontal");
+                    rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+
+                    //Character Flip
+                    Vector3 characterScale = transform.localScale;
+                    if (movement.x < 0) characterScale.x = -scaleX;
+                    else characterScale.x = scaleX;
+                    transform.localScale = characterScale;
+
+                    // Character Animation System
+                    if(Mathf.Abs(movement.x) > 0.1f || rb.velocity.y > 0)
+                        anim.SetFloat("Horizontal", movement.x);
+                    anim.SetFloat("Speed", movement.sqrMagnitude);
+
+                    //SideViewMovement();
+                    /*//Movement Recording
                     movement.x = Input.GetAxisRaw("Horizontal");
                     if (Input.GetKeyDown(KeyCode.W) && jump == false)
                     {
                         jumpStart = transform.position;
                         jump = true;
                         canJump = false;
-                    } 
+                    }
 
                     if (jump)
-                        Jump();
+                        Jump();*/
+
+
+
+                    // Implement SideView Walking Sound
+                }
+
+                // Save Pointing Direction
+                if (!(Mathf.Abs(movement.x) <= 0.01f && Mathf.Abs(movement.y) <= 0.01f))
+                {
+                    direction = movement;
+                }
+                else
+                {
+                    Idle();
                 }
             }
             else // Idle Player
@@ -140,11 +225,23 @@ public class PlayerSystem : SystemInterface
     void FixedUpdate()
     {
         // Character Displacement
-        if(isFree)
+        if(isFree && !isSideView)
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    bool IsGrounded()
+    {
+        RaycastHit2D raycastHit2D = Physics2D.BoxCast(box2d.bounds.center, box2d.bounds.size, 0f, Vector2.down, .1f, floorMask);
+        Debug.Log(raycastHit2D.collider);
+        return raycastHit2D.collider != null;
+    }
+
+    /*void SideViewMovement()
+    {
+        
+    }*/
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.layer.Equals(floorMask.value))
         {
@@ -169,7 +266,7 @@ public class PlayerSystem : SystemInterface
             movement.y = 0f;
         }
             
-    }
+    }*/
 
     // Plays when Player is not moving
     void Idle()
@@ -187,12 +284,16 @@ public class PlayerSystem : SystemInterface
     // Called when Player receives damage
     void Damage(int amount)
     {
-        if (this.life > 0)
+        if (!isImmune)
         {
-            this.life -= amount;
-            //GetComponent<AudioManager>().Play("PlayerDamage");
-            soundManager.Play("PlayerDamage");
-            playerUI.GetComponentInChildren<Health>().ChangeHealth(life);
+            if (this.life > 0)
+            {
+                isImmune = true;
+                playerSprite.material.color = damageColor;
+                this.life -= amount;
+                soundManager.Play("PlayerDamage");
+                playerUI.GetComponentInChildren<Health>().ChangeHealth(life);
+            }
         }
     }
 
@@ -200,7 +301,7 @@ public class PlayerSystem : SystemInterface
     void Collect(Item item)
     {
         inventory.AddItem(item);
-        //PlayCollectionSound(item.itemType);
+        PlayCollectionSound(item.itemType);
         Debug.Log(inventory.ToString());
     }
 
@@ -220,8 +321,10 @@ public class PlayerSystem : SystemInterface
     // Called when player has lost the game (no life or timer ends)
     void GameOver()
     {
-        soundManager.Play("GameOver");
-        PauseScript.GameIsPaused = true;
+        //soundManager.Play("GameOver");
+        movement = Vector2.zero;
+        PlayWalkingSound(true);
+        GameOverScript.gameOver = true;
         Debug.Log("Game Over");
     }
 
@@ -249,7 +352,7 @@ public class PlayerSystem : SystemInterface
 
         if (item.amount > 0)
         {
-            Debug.Log(item.ToString() + " Used");
+            //Debug.Log(item.ToString() + " Used");
 
             switch (selectedItem)
             {
@@ -266,18 +369,18 @@ public class PlayerSystem : SystemInterface
                     break;
                 case Item.ItemType.DamagePotion:
                     item.amount--;
-                    launcher.Throw(transform.position, SelectTargetPosition(), false);
+                    launcher.Throw(transform.position, false);
                     break;
                 case Item.ItemType.SuperPotion:
                     item.amount--;
-                    launcher.Throw(transform.position, SelectTargetPosition(), true);
+                    launcher.Throw(transform.position, true);
                     break;
             }
         }
     }
 
     // Returns a target position for a thrown potion
-    Vector2 SelectTargetPosition()
+    /*Vector2 SelectTargetPosition()
     {
         if (fov.visibleEnemies.Count != 0) // If enemies in the vicinity of Player: Select Random Enemy
         {
@@ -287,14 +390,15 @@ public class PlayerSystem : SystemInterface
         }
         else // Return a position staight ahead
         {
-            Vector2 targetPosition = transform.position;
+            return Vector2.zero;
+            /*Vector2 targetPosition = transform.position;
 
             targetPosition.x += direction.x * launcher.projectileRange;
             targetPosition.y += direction.y * launcher.projectileRange;
 
             return targetPosition;
         }
-    }
+    }*/
 
     // Return current life of Player
     public float GetLife()
@@ -308,4 +412,37 @@ public class PlayerSystem : SystemInterface
         return movement * speed;
     }
 
+    public Vector2 GetMovement()
+    {
+        return movement;
+    }
+
+    public FieldOfView GetFOV()
+    {
+        return fov;
+    }
+
+    public enum WalkingSurface { Grass, Stone } // Enum of the walking surfaces
+    public WalkingSurface walkingSurface; // Main Surface on which the player walks in the level
+    bool isWalking;
+
+    // Plays the appropriate walking sound
+    void PlayWalkingSound(bool pause)
+    {
+        switch (walkingSurface)
+        {
+            case WalkingSurface.Grass:
+                if(!pause)
+                    soundManager.Play("GrassWalking");
+                else
+                    soundManager.Stop("GrassWalking");
+                break;
+            case WalkingSurface.Stone:
+                if (!pause)
+                    soundManager.Play("StoneWalking");
+                else
+                    soundManager.Stop("StoneWalking");
+                break;
+        }
+    }
 }

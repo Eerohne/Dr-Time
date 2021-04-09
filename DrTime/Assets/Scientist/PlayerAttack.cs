@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    FieldOfView fov;
+    FieldOfView fov; // For attack range
 
-    public bool hasKnife;
+    public bool hasKnife; // true if player possesses a knife
 
     public float fistDamage = 1f;
     public float knifeDamage = 2f;
 
-    public GameObject fistAttack;
-    public GameObject knifeAttack;
+    public float attackDelay; // Delay Between Damage Output to an Enemy
+    float attackDelayBU; // Saved attack delay
+    public bool canAttack = true;
+
+    public GameObject fistAttack; // Rference to the punch sprite
+    public GameObject knifeAttack; // Reference to the slash sprite
 
     private void Awake()
     {
-        fov = GetComponent<FieldOfView>();
+        fov = GetComponent<FieldOfView>(); // Imports FieldOfView
+        attackDelayBU = attackDelay;
     }
 
     // Update is called once per frame
@@ -31,30 +36,46 @@ public class PlayerAttack : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
-            Attack();
+            Attack(); // Attacks if Player presses on Q
+
+        if (!canAttack)
+        {
+            attackDelay -= Time.deltaTime;
+            if(attackDelay <= 0.01f)
+            {
+                attackDelay = attackDelayBU;
+                canAttack = true;
+            }
+        }
     }
 
     void Attack()
     {
-        float damage;
-        Debug.Log("Attack!");
-        AttackSound();
-        foreach (Transform enemy in fov.visibleEnemies)
+        if (canAttack)
         {
-            if (hasKnife)
+            float damage;
+            Debug.Log("Attack!");
+            AttackSound();
+            foreach (Transform enemy in fov.visibleEnemies)
             {
-                damage = knifeDamage;
-                Instantiate(knifeAttack, enemy.transform.position, Quaternion.identity);
+                // Summons the appropriate Sprite and deals the appropriate damage
+                if (hasKnife)
+                {
+                    damage = knifeDamage;
+                    Instantiate(knifeAttack, enemy.transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    damage = fistDamage;
+                    Instantiate(fistAttack, enemy.transform.position, Quaternion.identity);
+                }
+                enemy.SendMessage("Damage", damage);
+                canAttack = false;
             }
-            else
-            {
-                damage = fistDamage;
-                Instantiate(fistAttack, enemy.transform.position, Quaternion.identity);
-            }
-            enemy.SendMessage("Damage", damage);
         }
     }
 
+    // Attack Sounds Manager
     void AttackSound()
     {
         if (hasKnife)

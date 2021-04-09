@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 6283425051326190864}
   - component: {fileID: 6283425051326190866}
   - component: {fileID: 6283425051326190865}
+  - component: {fileID: 2089206910}
   m_Layer: 5
   m_Name: Question Mark Image
   m_TagString: Untagged
@@ -675,6 +676,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2089206910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6283425051326190895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed70cd56d3847b542899f2aad8b3be23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceName: Core
+  pieceSprite: {fileID: -948323837268675462, guid: e32fa6d48b7662444bc1cac7aa203aa4,
+    type: 3}
 --- !u!1 &6283425051378993436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1030,7 @@ GameObject:
   - component: {fileID: 6283425052022370322}
   - component: {fileID: 6283425052022370324}
   - component: {fileID: 6283425052022370323}
+  - component: {fileID: 918685247}
   m_Layer: 5
   m_Name: Question Mark Image
   m_TagString: Untagged
@@ -1078,6 +1095,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &918685247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6283425052022370321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed70cd56d3847b542899f2aad8b3be23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceName: Bone
+  pieceSprite: {fileID: -1602320779787741356, guid: 8a43e202dd1b9614baf3d5741eb18fba,
+    type: 3}
 --- !u!1 &6283425052047952075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,6 +2010,7 @@ GameObject:
   - component: {fileID: 6283425052793543642}
   - component: {fileID: 6283425052793543644}
   - component: {fileID: 6283425052793543643}
+  - component: {fileID: 2032302123}
   m_Layer: 5
   m_Name: Question Mark Image
   m_TagString: Untagged
@@ -2042,6 +2075,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2032302123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6283425052793543641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed70cd56d3847b542899f2aad8b3be23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pieceName: Fossil
+  pieceSprite: {fileID: -8900310646466245185, guid: 4e632e5ebacf7ec42a4a4a322d0c04b3,
+    type: 3}
 --- !u!1 &6283425052871630207
 GameObject:
   m_ObjectHideFlags: 0

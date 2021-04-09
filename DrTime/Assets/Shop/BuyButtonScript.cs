@@ -6,13 +6,12 @@ using TMPro;
 
 public class BuyButtonScript : MonoBehaviour
 {
-    public Item item;
-    [SerializeField] private TextMeshProUGUI text;
+    public Item item; // Sold Item
+    [SerializeField] private TextMeshProUGUI text; // Reference to Situation Text
     private void Start()
     {
-        Button btn = gameObject.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
-        //text = GetComponent<TextMeshProUGUI>();
+        Button btn = gameObject.GetComponent<Button>(); // Reference to current button
+        btn.onClick.AddListener(TaskOnClick); //Adds listener to button
     }
 
     void TaskOnClick()
@@ -22,17 +21,18 @@ public class BuyButtonScript : MonoBehaviour
         int cost = Item.GetCost(item.itemType);
 
         if((coins - cost) < 0){
-            text.text = "Not enough coins ";
+            text.text = "Not enough coins";
             StartCoroutine("Wait");
+            FindObjectOfType<AudioManager>().Play("Deny");
         }
 
         if (item.itemType == Item.ItemType.Knife){
             foreach (Item item in PlayerSystem.inventory.itemList){
                 if(item.itemType == Item.ItemType.Knife){
                     if (PlayerSystem.inventory.itemList[4].amount > 0){
-                        text.text = "You already own one ";
+                        text.text = "You already own one!";
+                        FindObjectOfType<AudioManager>().Play("Deny");
                         StartCoroutine("Wait");
-                        Debug.Log("already have one");
                         return;
                     }
                 }

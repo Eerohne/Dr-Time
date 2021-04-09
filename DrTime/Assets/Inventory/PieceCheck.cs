@@ -21,26 +21,16 @@ public class PieceCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            ShowSprite(new Item(Item.ItemType.Coins, 1));
-        }
-
         if(img.sprite != pieceSprite)
         {
             foreach (Item i in inv.itemList)
             {
-                if (i.name == this.name)
+                if (i.name == this.pieceName)
                 {
                     ShowSprite(i);
                 }
             }
         }
-        else
-        {
-            Debug.Log("Already Done");
-        }
-        
     }
 
     void ShowSprite(Item i)

@@ -7,6 +7,7 @@ public class PauseScript : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMeneUI;
+    public GameObject settingMenuUI;
 
     private void Update()
     {
@@ -39,19 +40,15 @@ public class PauseScript : MonoBehaviour
 
     public void OpenSettings()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        settingMenuUI.SetActive(true);
         Debug.Log("Opened Settings");
     }
 
     public void Quit()
     {
-        Save();
+        SaveSystem.Save();
         Debug.Log("Quitting Game...");
         Application.Quit();
-    }
-
-    private void Save()
-    {
-        Debug.Log("Saving...");
     }
 }

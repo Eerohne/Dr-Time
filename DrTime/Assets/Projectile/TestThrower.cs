@@ -18,7 +18,7 @@ public class TestThrower : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            motion.Throw(transform.position, target.position, true);
+            motion.Throw(transform.position, true);
         }
     }
 }

@@ -72,8 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   amount: 1
-  effect: 3
-  name: 
+  effect: 4
+  itemName: 
 --- !u!50 &4832315775362062881
 Rigidbody2D:
   serializedVersion: 4
@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f76a2c4a7f2f02489d9dee223a95eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breakEffect: {fileID: 3668629124078428142, guid: f50949f21274f0a48bf9edf545ff6ff6,
+    type: 3}
 --- !u!1 &8517699211558061944
 GameObject:
   m_ObjectHideFlags: 0

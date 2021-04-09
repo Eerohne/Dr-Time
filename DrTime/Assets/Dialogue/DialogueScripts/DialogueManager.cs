@@ -6,28 +6,40 @@ using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Dialogue currentDialogue;
+    public Dialogue currentDialogue; // Displayed Dialogue Object
 
-    public Text nameText;
-    public Text dialogueText;
+    public Text nameText; // Name of the speeker
+    public Text dialogueText; 
 
-    public float letterDelay = 0;
+    public float letterDelay = 0; // Delay between letters
 
-    private Queue<string> sentences;
+    private Queue<string> sentences; // List of blocks of text
 
-    public Animator animator;
+    public Animator animator; // Reference to Dialogue Box Animator
+
+    bool isTriggered = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        sentences = new Queue<string>();
+        sentences = new Queue<string>(); // Loads Sentence Queue
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isTriggered)
+            DisplayNextSentence();
+    }
+
+    // Launches Dialogue
     public void StartDialogue(Dialogue dialogue)
     {
         currentDialogue = dialogue;
 
+        isTriggered = true;
+
         animator.SetBool("IsOpen", true);
+        FindObjectOfType<AudioManager>().Play("Dialogue");
 
         nameText.text = dialogue.name;
 
@@ -41,6 +53,7 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    // Dequeues through the sentence queue and prints the appropriate sentence
     public void DisplayNextSentence()
     {
         if(sentences.Count == 0)
@@ -56,6 +69,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    // Display Text char by char
     public IEnumerator PlayText(string sentence)
     {
         dialogueText.text = "";
@@ -70,9 +84,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    // Hides Dialogue Box and Plays Dialogue Transition sound
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        FindObjectOfType<AudioManager>().Play("Dialogue");
+        isTriggered = false;
         currentDialogue.closeEvent.Invoke();
     }
 }

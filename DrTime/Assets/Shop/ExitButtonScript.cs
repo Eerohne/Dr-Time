@@ -14,6 +14,13 @@ public class ExitButtonScript : MonoBehaviour
 
     void TaskOnClick()
     {
+        StartCoroutine("Wait");
+    }
+
+    IEnumerator Wait()
+    {
+        FindObjectOfType<AudioManager>().Play("Quit");
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Lobby");
     }
 }
