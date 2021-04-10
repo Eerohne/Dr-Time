@@ -40,6 +40,7 @@ public class GameOverScript : MonoBehaviour
         gameOverUI.SetActive(false);
         endGame = true;
         gameOver = false;
+        FindObjectOfType<AudioManager>().Play("Select");
         SceneManager.LoadScene(level);
     }
 

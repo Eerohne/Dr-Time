@@ -24,7 +24,8 @@ public class EnterScene : MonoBehaviour
 
         if (isInside && Input.GetKeyDown(KeyCode.R)){
 
-                SceneManager.LoadScene(scene);
+            SaveSystem.Save();
+            SceneManager.LoadScene(scene);
         }
 
     }

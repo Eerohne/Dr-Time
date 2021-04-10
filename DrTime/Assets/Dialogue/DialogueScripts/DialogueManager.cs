@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator; // Reference to Dialogue Box Animator
 
     bool isTriggered = false;
+    public bool isTutorial = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isTriggered)
+        if (Input.GetKeyDown(KeyCode.Space) && isTriggered && ((!PauseScript.GameIsPaused && !GameOverScript.gameOver) || isTutorial))
             DisplayNextSentence();
     }
 

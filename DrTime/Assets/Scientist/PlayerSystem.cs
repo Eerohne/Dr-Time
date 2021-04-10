@@ -63,11 +63,6 @@ public class PlayerSystem : SystemInterface
         immunityBU = immunityBetweenAttacks;
     }
 
-    private void Start()
-    {
-        SaveSystem.LoadPlayer();
-    }
-
     Vector2 movement; // Movement Vector of the Player
     [SerializeField]Vector2 direction; //Direction at which the player is pointing
 
@@ -163,7 +158,7 @@ public class PlayerSystem : SystemInterface
                 }
                 else //if side view
                 {
-                    if (IsGrounded() && Input.GetKeyDown(KeyCode.W))
+                    if (IsGrounded() && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
                     {
                         rb.velocity = Vector2.up * jumpVelocity;
                     }

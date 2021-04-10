@@ -36,6 +36,7 @@ public class PauseScript : MonoBehaviour
         pauseMeneUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        FindObjectOfType<AudioManager>().Play("Select");
     }
 
     public void OpenSettings()
@@ -43,11 +44,13 @@ public class PauseScript : MonoBehaviour
         //Time.timeScale = 1f;
         settingMenuUI.SetActive(true);
         Debug.Log("Opened Settings");
+        FindObjectOfType<AudioManager>().Play("Select");
     }
 
     public void Quit()
     {
         SaveSystem.Save();
+        FindObjectOfType<AudioManager>().Play("Select");
         Debug.Log("Quitting Game...");
         Application.Quit();
     }

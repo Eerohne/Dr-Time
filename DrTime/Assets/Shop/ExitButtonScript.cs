@@ -19,6 +19,7 @@ public class ExitButtonScript : MonoBehaviour
 
     IEnumerator Wait()
     {
+        SaveSystem.Save();
         FindObjectOfType<AudioManager>().Play("Quit");
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Lobby");

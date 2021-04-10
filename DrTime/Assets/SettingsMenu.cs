@@ -40,6 +40,7 @@ public class SettingsMenu : MonoBehaviour
     public void CloseSettings()
     {
         SaveSettings();
+        FindObjectOfType<AudioManager>().Play("Select");
         settingsMenuUI.SetActive(false);
     }
 }

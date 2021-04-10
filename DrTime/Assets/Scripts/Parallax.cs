@@ -9,10 +9,12 @@ public class Parallax : MonoBehaviour
     private float startpos;
 
     public GameObject camera;
+    //Intensity of the effect
     public float parallaxEffect;
        
     // Start is called before the first frame update
     void Start(){
+        //Start x-position of the game object
         startpos = transform.position.x;
 
         //Gets the length (x-component) of the sprite which the script affects
@@ -27,6 +29,7 @@ public class Parallax : MonoBehaviour
 
         transform.position = new Vector3(startpos + distance, transform.position.y, transform.position.z);
 
+        //changes the position of the background (gameObject) based on the camera's position
         if (temp > startpos + length){
             startpos += length;
         }
