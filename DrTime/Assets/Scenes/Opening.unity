@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 14177325}
   - component: {fileID: 14177327}
   - component: {fileID: 14177326}
+  - component: {fileID: 14177328}
   m_Layer: 5
   m_Name: day 744
   m_TagString: Untagged
@@ -181,7 +182,7 @@ MonoBehaviour:
 
 
     We are almost there it has been days since we have had
-    an accident. Soon I''ll be able to save you my son!'
+    an accident. Soon I''ll be able to save you, my son!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f1e3935f33e0124f8cf7d274a4fe843, type: 2}
   m_sharedMaterial: {fileID: -665599370364572495, guid: 3f1e3935f33e0124f8cf7d274a4fe843,
@@ -259,6 +260,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14177324}
   m_CullTransparentMesh: 0
+--- !u!114 &14177328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14177324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ee941d6ae76444587c3a0b5541c760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txt: {fileID: 14177326}
+  before: {fileID: 0}
+  story: 
+  wait: 0.05
 --- !u!1 &655300580
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +406,7 @@ GameObject:
   - component: {fileID: 849004413}
   - component: {fileID: 849004415}
   - component: {fileID: 849004414}
+  - component: {fileID: 849004416}
   m_Layer: 5
   m_Name: day 745
   m_TagString: Untagged
@@ -435,10 +453,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Day 745: \n\nI finally made it! I created a machine that allows me to
-    travel time and dimensions. For you my son I would make the impossible possible.
+    travel times and dimensions. For you my son, I would make the impossible possible.
     Two years ago, when you got sick, I told you that I would find a way to heal
-    you, since the incompetent doctors could not do anything. With this machine I
-    can find items that can help you with this ferocious disease. I have planned
+    you, since the incompetent doctors could not do anything. With this machine,
+    I can find items that can help you with this ferocious disease. I have planned
     a route through 3 different dimensions to find these items. I may never come
     back, but it is all worth it, because after all, you are my greatest creation. 
     \r\n\r\n"
@@ -519,6 +537,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849004412}
   m_CullTransparentMesh: 0
+--- !u!114 &849004416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849004412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ee941d6ae76444587c3a0b5541c760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txt: {fileID: 849004414}
+  before: {fileID: 14177328}
+  story: 
+  wait: 0.05
 --- !u!1 &972401168
 GameObject:
   m_ObjectHideFlags: 0

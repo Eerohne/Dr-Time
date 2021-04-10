@@ -11,6 +11,7 @@ public class EnterScene : MonoBehaviour
     public Text text;
     public Image backdrop;
     private bool isInside = false;
+    public bool isPortal;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,15 @@ public class EnterScene : MonoBehaviour
         if (isInside && Input.GetKeyDown(KeyCode.R)){
 
             SaveSystem.Save();
-            SceneManager.LoadScene(scene);
+
+            if (isPortal)
+            {
+                StartCoroutine("portalWait");
+            }
+            else
+            {
+                SceneManager.LoadScene(scene);
+            }
         }
 
     }
@@ -87,5 +96,13 @@ public class EnterScene : MonoBehaviour
 
         }
     }
+
+    IEnumerator portalWait()
+    {
+        FindObjectOfType<AudioManager>().Play("Portal");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(scene);
+    }
+
 
 }

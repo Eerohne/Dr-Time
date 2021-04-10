@@ -173,10 +173,26 @@ public class PlayerSystem : SystemInterface
                     else characterScale.x = scaleX;
                     transform.localScale = characterScale;
 
+                    float axis = Mathf.Abs(movement.x);
+
                     // Character Animation System
-                    if(Mathf.Abs(movement.x) > 0.1f || rb.velocity.y > 0)
+                    if (axis > 0.1f || rb.velocity.y > 0)
                         anim.SetFloat("Horizontal", movement.x);
                     anim.SetFloat("Speed", movement.sqrMagnitude);
+
+                    if (!isWalking)
+                    {
+                        if (axis > 0f && IsGrounded())
+                        {
+                            PlayWalkingSound(false);
+                            isWalking = true;
+                        }
+                    }
+                    if (axis <= 0.01f || !IsGrounded())
+                    {
+                        PlayWalkingSound(true);
+                        isWalking = false;
+                    }
 
                     //SideViewMovement();
                     /*//Movement Recording
@@ -213,6 +229,21 @@ public class PlayerSystem : SystemInterface
                 anim.SetFloat("Speed", 0f);
 
                 Idle();
+            }
+        }
+
+        if (GameOverScript.gameOver || PauseScript.GameIsPaused)
+        {
+            isWalking = false;
+            PlayWalkingSound(true);
+        }
+
+        if (GameOverScript.gameOver)
+        {
+            foreach(Item item in inventory.itemList)
+            {
+                if (item.name == "Fragment")
+                    inventory.itemList.Remove(item);
             }
         }
     }
@@ -305,11 +336,11 @@ public class PlayerSystem : SystemInterface
     {
         if (itemType == Item.ItemType.Coins)
         {
-            soundManager.Play("CoinCollection");
+            soundManager.PlayIndividualSound("CoinCollection");
         }
         else
         {
-            soundManager.Play("ItemCollection");
+            soundManager.PlayIndividualSound("ItemCollection");
         }
     }
 

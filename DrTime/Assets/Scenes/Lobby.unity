@@ -3578,6 +3578,7 @@ MonoBehaviour:
   scene: Tutorial
   text: {fileID: 315909030}
   backdrop: {fileID: 599517235}
+  isPortal: 0
 --- !u!1001 &389115797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6594,6 +6595,11 @@ PrefabInstance:
       propertyPath: backdrop
       value: 
       objectReference: {fileID: 599517235}
+    - target: {fileID: 1278951681908094321, guid: 4f54137cd2fe4c74f900f9a5f57ce6e9,
+        type: 3}
+      propertyPath: isPortal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3308105532116205976, guid: 4f54137cd2fe4c74f900f9a5f57ce6e9,
         type: 3}
       propertyPath: m_Name
@@ -6902,6 +6908,7 @@ MonoBehaviour:
   scene: Shop
   text: {fileID: 315909030}
   backdrop: {fileID: 599517235}
+  isPortal: 0
 --- !u!1001 &1749904627
 PrefabInstance:
   m_ObjectHideFlags: 0

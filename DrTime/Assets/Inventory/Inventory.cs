@@ -56,4 +56,17 @@ public class Inventory{
 
         return s;
     }
+
+    public int GetNumberOfPuzzlePiece(string _name)
+    {
+        int amount = 0;
+
+        foreach (Item i in itemList)
+        {
+            if (i.name == _name)
+                amount += i.amount;
+        }
+
+        return amount;
+    }
 }

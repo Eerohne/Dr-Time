@@ -322,6 +322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 591521506481473466, guid: 418c87cf71e6129479acb5b774a6727c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 591521507158553659, guid: 418c87cf71e6129479acb5b774a6727c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5811,6 +5816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787184957}
   - component: {fileID: 787184956}
+  - component: {fileID: 787184958}
   m_Layer: 0
   m_Name: invisiblewall
   m_TagString: InvisibleWall
@@ -5842,7 +5848,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!4 &787184957
 Transform:
@@ -5852,12 +5858,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787184955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.42, y: -5.55, z: -2838.8887}
-  m_LocalScale: {x: 2.852391, y: 2.852391, z: 2.852391}
+  m_LocalPosition: {x: 57.5, y: -5.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787184958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787184955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38c0d24f5f8c439094cb03ebe65e120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bone
 --- !u!4 &796695528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7712775997850392682, guid: 6ea8a7a09957f714eb07d0b59ae97991,
@@ -6465,26 +6484,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 130595959663977722, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.07047515
-      objectReference: {fileID: 0}
-    - target: {fileID: 130595959663977722, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.1483745
-      objectReference: {fileID: 0}
-    - target: {fileID: 130595959663977722, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0.008503359
-      objectReference: {fileID: 0}
-    - target: {fileID: 130595959663977722, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.015018031
-      objectReference: {fileID: 0}
     - target: {fileID: 130595959663977723, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
         type: 3}
       propertyPath: m_RootOrder
@@ -6539,11 +6538,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 130595959663977726, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
-        type: 3}
-      propertyPath: speed
-      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 130595959663977726, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
         type: 3}
@@ -6728,6 +6722,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1904114496}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &958704331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958704330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38c0d24f5f8c439094cb03ebe65e120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bone
 --- !u!4 &973362407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1882592406865423361, guid: fa273eb2092d3ec4ebcd69685f90e2aa,
@@ -7160,7 +7167,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004066922, y: -0.012324475}
+  m_Offset: {x: -0.013653994, y: -0.017486736}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7171,7 +7178,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.095615715, y: 0.23277448}
+  m_Size: {x: 0.13543844, y: 0.243099}
   m_EdgeRadius: 0
 --- !u!50 &1035854204
 Rigidbody2D:
@@ -7232,6 +7239,7 @@ MonoBehaviour:
     m_Bits: 2048
   detectionRadius: 5
   anim: {fileID: 1666423096}
+  specialAnim: 0
 --- !u!114 &1035854207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84431,7 +84439,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 332684027, guid: 46c66bf5841e5424692042640bac2d94, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 46c66bf5841e5424692042640bac2d94, type: 3}
 --- !u!4 &1905216865 stripped
 Transform:
@@ -85520,6 +85529,7 @@ GameObject:
   - component: {fileID: 2063436158}
   - component: {fileID: 2063436157}
   - component: {fileID: 2063436160}
+  - component: {fileID: 2063436161}
   m_Layer: 5
   m_Name: dialogue trigger
   m_TagString: Untagged
@@ -85544,9 +85554,9 @@ MonoBehaviour:
     sentences:
     - Sir... You have made it to the Moon Walking Skeleton realm.
     - These Moon Walking Skeleton are extremely dangerous, you must stay alert at
-      all time!
+      all times!
     - 'In order to save your son you need a golden skeleton bone, it is a crucial
-      ingridient to the remedy. '
+      ingredient to the remedy. '
     - Find your way to the golden skeleton and get his bone! Good luck sir the portal
       closes in 5 minutes!
     closeEvent:
@@ -85615,6 +85625,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2063436161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063436156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38c0d24f5f8c439094cb03ebe65e120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bone
 --- !u!4 &2071647870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1729613142506281909, guid: caa79883c1612fd42a8e950edf2536ce,
@@ -86743,11 +86766,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 130595959663977726, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
-        type: 3}
-      propertyPath: speed
-      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 130595959663977726, guid: 297428a8f14a4904e8fe4aca8b12cbb5,
         type: 3}

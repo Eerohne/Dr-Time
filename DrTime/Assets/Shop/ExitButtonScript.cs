@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ExitButtonScript : MonoBehaviour
 {
+    public float exitTime = 0.5f;
+
     private void Start()
     {
         Button btn = gameObject.GetComponent<Button>();
@@ -19,9 +21,9 @@ public class ExitButtonScript : MonoBehaviour
 
     IEnumerator Wait()
     {
-        SaveSystem.Save();
         FindObjectOfType<AudioManager>().Play("Quit");
-        yield return new WaitForSeconds(0.5f);
+        SaveSystem.Save();
+        yield return new WaitForSeconds(exitTime);
         SceneManager.LoadScene("Lobby");
     }
 }

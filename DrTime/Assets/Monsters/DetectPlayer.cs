@@ -12,6 +12,7 @@ public class DetectPlayer : MonoBehaviour
     public float detectionRadius = 3f;
 
     public Animator anim;
+    public bool specialAnim = false;
 
     private void Start()
     {
@@ -24,17 +25,22 @@ public class DetectPlayer : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(gameObject.transform.position, detectionRadius, playerMask))
         {
-            followScript.enabled = true;
-            anim.SetBool("isWalking", true);
-            patrolScript.enabled = false;
+            SwitchScript(true);
         }
         else
         {
-            patrolScript.enabled = true;
-            anim.SetBool("isWalking", false);
-            followScript.enabled = false;
+            SwitchScript(false);
         }
     }
+
+    void SwitchScript(bool follow)
+    {
+        followScript.enabled = follow;
+        if (!specialAnim)
+            anim.SetBool("isWalking", follow);
+        patrolScript.enabled = !follow;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -145,3 +145,4 @@ MonoBehaviour:
   scene: Level1
   text: {fileID: 0}
   backdrop: {fileID: 0}
+  isPortal: 1

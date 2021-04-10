@@ -517,7 +517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deals 3 damage points when thrown
+  m_text: Deals 4 damage points when thrown
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2971,7 +2971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deals 1 damage points when thrown
+  m_text: Deals 2 damage points when thrown
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4113,6 +4113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385c177bfd2a9e5468d2b5dd59cd412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitTime: 0
 --- !u!114 &2060009101
 MonoBehaviour:
   m_ObjectHideFlags: 0

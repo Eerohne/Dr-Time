@@ -62,5 +62,4 @@ public class Item
             case ItemType.Knife:         return 75;
         }
     }
-
 }

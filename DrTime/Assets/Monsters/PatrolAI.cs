@@ -10,6 +10,7 @@ public class PatrolAI : MonoBehaviour
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public float pauseLength = 1f;
+    float savedPauseTime;
 
     public Transform enemyGFX;
 
@@ -31,6 +32,7 @@ public class PatrolAI : MonoBehaviour
 
         targetCount = targets.Count;
         currentTargetIndex = 0;
+        savedPauseTime = pauseLength;
     }
 
     private void OnEnable()
@@ -58,15 +60,22 @@ public class PatrolAI : MonoBehaviour
             path = p;
             currentWaypoint = 0;
 
-            if (destinationReached)
+            if (destinationReached && pauseLength < 0)
+            {
+                pauseLength = savedPauseTime;
                 destinationReached = false;
+            }
+                
         }
     }
 
     void FixedUpdate()
     {
         if (destinationReached)
+        {
+            pauseLength -= Time.deltaTime;
             return;
+        }
 
         if (path == null)
             return;
