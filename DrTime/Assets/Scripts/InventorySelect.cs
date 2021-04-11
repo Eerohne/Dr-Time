@@ -21,18 +21,21 @@ public class InventorySelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if you press 1 then the rim over the first thing in the inventory appears
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             image1.enabled = true;
             image2.enabled = false;
             image3.enabled = false;
         }
+        //if you press 2 then the rim over the first thing in the inventory appears
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             image1.enabled = false;
             image2.enabled = true;
             image3.enabled = false;
         }
+        //if you press 3 then the rim over the first thing in the inventory appears
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             image1.enabled = false;

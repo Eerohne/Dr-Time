@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 5d6de96d5ff84754a84fff8c73f231fb
   - enabled: 1
-    path: Assets/Scenes/Prototype.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Opening.unity
+    guid: f87a3116d9a55014f90a047b250304b0
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: c51b540a10f51a04b8d11b3b548a6a20
@@ -20,33 +20,21 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Prototype.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
-    guid: 5d6de96d5ff84754a84fff8c73f231fb
-  - enabled: 0
-    path: Assets/Scenes/Tutorial.unity
-    guid: c51b540a10f51a04b8d11b3b548a6a20
-  - enabled: 0
-    path: Assets/Scenes/Lobby.unity
-    guid: 8acaf9bbf130404479e39a5832f61410
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: b7ef3d6e49581fa44b38fd7b14d80c01
-  - enabled: 0
-    path: Assets/Scenes/Level2.unity
-    guid: 43855419c516a6341979953e4c0b67b1
-  - enabled: 0
-    path: Assets/Scenes/Level3.unity
-    guid: 108107ac4213be1468c354779d1e1a45
-  - enabled: 0
-    path: Assets/Scenes/Shop.unity
-    guid: f9502343e7bb48a4daf3899d6a1eeb8f
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: 43855419c516a6341979953e4c0b67b1
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 108107ac4213be1468c354779d1e1a45
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 7bddaaf525153e247b484d44cf13635f
+  - enabled: 1
+    path: Assets/Scenes/Closing.unity
+    guid: c490ebd9b89f69f448530e7c3c0cfb78
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: f9502343e7bb48a4daf3899d6a1eeb8f

@@ -28,14 +28,14 @@ public class MainMenu : MonoBehaviour
     {
         SaveSystem.Save();
         FindObjectOfType<AudioManager>().Play("Select");
-        LaunchGame();
+        SceneManager.LoadScene("Opening");
     }
 
     public void LoadGame()
     {
         PlayerSystem.inventory = SaveSystem.LoadPlayer().inventory;
         FindObjectOfType<AudioManager>().Play("Select");
-        LaunchGame();
+        SceneManager.LoadScene("Lobby");
     }
 
     public void OpenSettings()
@@ -51,8 +51,8 @@ public class MainMenu : MonoBehaviour
 
     }
 
-    void LaunchGame()
+    /*void LaunchGame()
     {
         SceneManager.LoadScene("Lobby");
-    }
+    }*/
 }

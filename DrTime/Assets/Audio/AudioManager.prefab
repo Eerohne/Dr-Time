@@ -115,8 +115,8 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
   - name: Dialogue
-    clip: {fileID: 8300000, guid: 11201e3fa84ce6e42b2efbdba3f0feb4, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: baf91d53788e7854c8786d36fe77c085, type: 3}
+    volume: 0.75
     pitch: 1
     source: {fileID: 0}
     loop: 0
@@ -226,4 +226,18 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     isMusic: 0
+  - name: Ending
+    clip: {fileID: 8300000, guid: c989eeab3abf82e4f8ce09bf8649efd3, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
+  - name: Opening
+    clip: {fileID: 8300000, guid: ab7460c3dc5155c40856e947540f2b79, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    isMusic: 1
   mixer: {fileID: 24100000, guid: f73833b2e1cb68348ba27333c135602e, type: 2}

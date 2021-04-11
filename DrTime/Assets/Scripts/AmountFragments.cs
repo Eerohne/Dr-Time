@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Reads the amount of fragments possessed
 public class AmountFragments : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;

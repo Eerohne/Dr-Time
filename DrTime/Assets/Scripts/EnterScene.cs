@@ -12,6 +12,7 @@ public class EnterScene : MonoBehaviour
     public Image backdrop;
     private bool isInside = false;
     public bool isPortal;
+    public Animator transition;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +46,6 @@ public class EnterScene : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isInside = true;
-
-
             StartCoroutine(FadeText(false));
         }
 
@@ -76,6 +75,9 @@ public class EnterScene : MonoBehaviour
                 yield return null;
             }
 
+            backdrop.color = new Color(0.1698f, 0.1698f, 0.1698f, 0);
+            text.color = new Color(120, 60, 120, 0);
+
         }
 
         //fade in
@@ -100,6 +102,7 @@ public class EnterScene : MonoBehaviour
     IEnumerator portalWait()
     {
         FindObjectOfType<AudioManager>().Play("Portal");
+        transition.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(scene);
     }

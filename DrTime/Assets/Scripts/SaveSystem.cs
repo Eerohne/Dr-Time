@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
  
+    // transforms the inventory into a binary file
     public static void Save()
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -17,6 +18,7 @@ public static class SaveSystem
         stream.Close();
     }
 
+    // finds the binary file and decrypt it
     public static SavingPlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/player.DrTime";

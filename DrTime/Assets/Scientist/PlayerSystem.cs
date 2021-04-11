@@ -72,6 +72,13 @@ public class PlayerSystem : SystemInterface
     //bool canJump = true; // True if Player can jump again
     [SerializeField] LayerMask floorMask;
 
+    private void Start()
+    {
+        inventory = SaveSystem.LoadPlayer().inventory;
+        if (inventory == null)
+            inventory = new Inventory();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -238,14 +245,14 @@ public class PlayerSystem : SystemInterface
             PlayWalkingSound(true);
         }
 
-        if (GameOverScript.gameOver)
+        /*if (GameOverScript.gameOver)
         {
             foreach(Item item in inventory.itemList)
             {
-                if (item.name == "Fragment")
+                if (item.name == "Fragment" || item.name == "Key")
                     inventory.itemList.Remove(item);
             }
-        }
+        }*/
     }
 
     void FixedUpdate()
@@ -453,7 +460,7 @@ public class PlayerSystem : SystemInterface
     bool isWalking;
 
     // Plays the appropriate walking sound
-    void PlayWalkingSound(bool pause)
+    public void PlayWalkingSound(bool pause)
     {
         switch (walkingSurface)
         {

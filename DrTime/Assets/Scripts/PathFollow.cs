@@ -8,6 +8,7 @@ public class PathFollow : MonoBehaviour
     public float speed;
 
     Animator anim;
+    PlayerSystem player;
 
     Vector2 movement;
 
@@ -16,8 +17,29 @@ public class PathFollow : MonoBehaviour
         //target = GetComponent<Transform>();
         movement = Vector2.zero;
         anim = GetComponent<Animator>();
+        player = GetComponent<PlayerSystem>();
 
-        gameObject.GetComponent<PlayerSystem>().isAnimation = true;
+        player.isAnimation = true;
+        player.PlayWalkingSound(false);
+    }
+
+    private void OnEnable()
+    {
+        if(player != null)
+        {
+            player.PlayWalkingSound(false);
+            player.isAnimation = true;
+            player.isFree = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        movement = Vector2.zero;
+        player.PlayWalkingSound(true);
+        player.isFree = true;
+        player.isAnimation = false;
+        target = null;
     }
 
     private void Update()
@@ -34,12 +56,15 @@ public class PathFollow : MonoBehaviour
 
         if (transform.position == target.position)
         {
-            movement = Vector2.zero;
-            gameObject.GetComponent<PlayerSystem>().isFree = true;
-            gameObject.GetComponent<PlayerSystem>().isAnimation = false;
-            Destroy(gameObject.GetComponent("PathFollow"));
+            GetComponent<PathFollow>().enabled = false;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+    }
+
+    // Sets and prepares target
+    public void SetTarget(GameObject _target)
+    {
+        target = _target.transform;
     }
 }

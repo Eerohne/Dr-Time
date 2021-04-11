@@ -12,9 +12,9 @@ public class Inventory{
         //creates list of items
         itemList = new List<Item>();
         
-        AddItem(new Item(Item.ItemType.Coins, 500)); //position 0
+        AddItem(new Item(Item.ItemType.Coins, 0)); //position 0
         AddItem(new Item(Item.ItemType.HealthPotion, 0, 3)); // position 1
-        AddItem(new Item(Item.ItemType.DamagePotion, 1000, 2)); // position 2
+        AddItem(new Item(Item.ItemType.DamagePotion, 0, 2)); // position 2
         AddItem(new Item(Item.ItemType.SuperPotion, 0, 3)); // position 3
         AddItem(new Item(Item.ItemType.Knife, 0)); // position 4
     }

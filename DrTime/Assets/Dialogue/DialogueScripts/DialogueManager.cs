@@ -24,11 +24,14 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>(); // Loads Sentence Queue
+        if (currentDialogue != null)
+            StartCoroutine("DefaultDialogue");
+            
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isTriggered && ((!PauseScript.GameIsPaused && !GameOverScript.gameOver) || isTutorial))
+        if (Input.GetKeyDown(KeyCode.Space) && isTriggered && (((!PauseScript.GameIsPaused && !GameOverScript.gameOver) || isTutorial)))
             DisplayNextSentence();
     }
 
@@ -92,5 +95,11 @@ public class DialogueManager : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Dialogue");
         isTriggered = false;
         currentDialogue.closeEvent.Invoke();
+    }
+
+    IEnumerator DefaultDialogue()
+    {
+        yield return new WaitForSeconds(.1f);
+        StartDialogue(currentDialogue);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class PauseScript : MonoBehaviour
     public GameObject pauseMeneUI;
     public GameObject settingMenuUI;
 
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -16,6 +20,7 @@ public class PauseScript : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
+                settingMenuUI.SetActive(false);
             }
             else
             {
@@ -26,6 +31,7 @@ public class PauseScript : MonoBehaviour
 
     public void Pause()
     {
+        FindObjectOfType<AudioManager>().Pause(SceneManager.GetActiveScene().name);
         pauseMeneUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -33,6 +39,7 @@ public class PauseScript : MonoBehaviour
 
     public void Resume()
     {
+        FindObjectOfType<AudioManager>().Play(SceneManager.GetActiveScene().name);
         pauseMeneUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;

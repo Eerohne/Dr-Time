@@ -10,12 +10,12 @@ public class PieceCheck : MonoBehaviour
     public Sprite pieceSprite;
     Image img;
 
-    private Inventory inv;
+    //private Inventory inv;
 
     void Start()
     {
         img = GetComponent<Image>();
-        inv = PlayerSystem.inventory;
+        //inv = PlayerSystem.inventory;
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PieceCheck : MonoBehaviour
     {
         if(img.sprite != pieceSprite)
         {
-            foreach (Item i in inv.itemList)
+            foreach (Item i in PlayerSystem.inventory.itemList)
             {
                 if (i.name == this.pieceName)
                 {
