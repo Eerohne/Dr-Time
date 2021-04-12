@@ -7103,7 +7103,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -7122,7 +7122,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -9654,7 +9654,7 @@ MonoBehaviour:
     - 'I detect a fragment straight ahead.
 
 '
-    - It shoudl be guarded by a similar Golem as before.
+    - It should be guarded by a similar Golem as before.
     - When you beat it, collect its fragment and then go to the left room, the one
       where the portal to the Moonwalking Skeletons was located.
     closeEvent:
@@ -32802,6 +32802,7 @@ GameObject:
   - component: {fileID: 1549009578}
   - component: {fileID: 1549009577}
   - component: {fileID: 1549009576}
+  - component: {fileID: 1549009579}
   m_Layer: 0
   m_Name: SleepingGolem
   m_TagString: Untagged
@@ -32920,6 +32921,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1549009579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549009574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d88005e50233624382f2477f5e3b7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1549232427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119270,8 +119283,8 @@ MonoBehaviour:
   dialogue:
     name: Assistant
     sentences:
-    - 'Finally! If you continue walking on this bridge, you should encounter the last
-      Guardian Golem. '
+    - 'Finally! If you continue walking on this bridge, you should encounter the
+      last Guardian Golem. '
     - Collect its core fragment and come back to the room were you found the first
       fragment.
     - Just be cautious. Collecting all of the fragments may awaken the Boss Golem

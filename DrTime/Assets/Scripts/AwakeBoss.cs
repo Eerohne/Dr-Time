@@ -32,8 +32,7 @@ public class AwakeBoss : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && PlayerSystem.inventory.GetNumberOfPuzzlePiece(pieceToCheck) >= amountToHave)
         {
-            isInside = true;
-            StartCoroutine(FadeText(false));
+            ShowText(false);
         }
     }
 
@@ -41,9 +40,14 @@ public class AwakeBoss : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && PlayerSystem.inventory.GetNumberOfPuzzlePiece(pieceToCheck) >= amountToHave)
         {
-            isInside = false;
-            StartCoroutine(FadeText(true));
+            ShowText(true);
         }
+    }
+
+    void ShowText(bool fade)
+    {
+        isInside = !fade;
+        StartCoroutine(FadeText(fade));
     }
 
     IEnumerator FadeText(bool fadeOut)
@@ -85,11 +89,16 @@ public class AwakeBoss : MonoBehaviour
     {
         Destroy(coreImage);
         Destroy(coreCounter);
-        for (int i = 0; i < PlayerSystem.inventory.itemList.Count; i++)
+        for (float i = 0.5f; i >= 0; i -= Time.deltaTime)
         {
-            if (PlayerSystem.inventory.itemList[i].name == "Fragment")
-                PlayerSystem.inventory.itemList.RemoveAt(i);
+            backdrop.color = new Color(0.1698f, 0.1698f, 0.1698f, i);
+            text.color = new Color(120, 60, 120, i);
+
+            yield return null;
         }
+
+        backdrop.color = new Color(0.1698f, 0.1698f, 0.1698f, 0);
+        text.color = new Color(120, 60, 120, 0);
         yield return new WaitForSeconds(.3f);
         boss.SetActive(true);
         Destroy(gameObject);

@@ -147,7 +147,7 @@ public class PlayerSystem : SystemInterface
                     anim.SetFloat("Vertical", movement.y);
                     anim.SetFloat("Speed", movement.sqrMagnitude);
 
-                    float axis = Mathf.Abs(Input.GetAxis("Horizontal") + Input.GetAxis("Vertical"));
+                    float axis = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
                     
                     if (!isWalking)
                     {
@@ -268,38 +268,6 @@ public class PlayerSystem : SystemInterface
         Debug.Log(raycastHit2D.collider);
         return raycastHit2D.collider != null;
     }
-
-    /*void SideViewMovement()
-    {
-        
-    }*/
-
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer.Equals(floorMask.value))
-        {
-            Debug.Log("Landed");
-            jump = false;
-            canJump = true;
-        }
-    }
-
-    Vector2 jumpStart;
-    public float jumpSpeed = 5f;
-    public float maxJumpHeight = 10f;
-
-    // Jump Function : Verifies if player should go up or down
-    void Jump()
-    {
-        if ((transform.position.y - jumpStart.y) <= maxJumpHeight)
-            movement.y = 1f;
-        else
-        {
-            jump = false;
-            movement.y = 0f;
-        }
-            
-    }*/
 
     // Plays when Player is not moving
     void Idle()
